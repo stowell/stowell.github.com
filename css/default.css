@@ -1,0 +1,10 @@
+body {
+    font-size: 100%;
+    font-family: Verdana, sans-serif;
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+p {
+    width: 50em;
+}
