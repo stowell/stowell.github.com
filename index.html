@@ -2,38 +2,9 @@
 layout: default
 title: "dan stowell"
 ---
-
-<html>
-<head>
-<title>dan stowell</title>
-<style type="text/css">
-body {
-    font-size: 100%;
-    font-family: Verdana, sans-serif;
-}
-a {
-	color: #000; 
-	text-decoration: none;
-}
-a:visited { color: #000; }
-a:hover { color: #666; }
-#thedeal {
-    width: 400px;
-    margin-left: 2em;
-    margin-top: 1em;
-}
-#email { text-align:right; }
-</style>
-</head>
-<body>
-<div id="thedeal">
-<img src="besseggen.ridge.jpg"/>
-<p>
+<section class="content">
 {% for post in site.posts %}
 	<a href="{{ post.url }}">{{ post.tile }}</a><br/>
 {% endfor %}
-</p>
 <p id="email"><a href="mailto:dan@stowell.de">dan@stowell.de</a></p>
-</div>
-</body>
-</html>
+</section>
