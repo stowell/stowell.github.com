@@ -3,7 +3,7 @@ layout: default
 title: Winter Beats and Hearts from I Break Horses
 ---
 
-## _Winter Beats_ and _Hearts_ from I Break Horses
+### _Winter Beats_ and _Hearts_ from I Break Horses
 
 **Where I go to escape in daylight, on repeat in the dark at night, everyone can see your face in the glow of the screen.**
 

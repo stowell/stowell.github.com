@@ -3,7 +3,7 @@ layout: default
 title: The Past is a Grotesque Animal from Of Montreal
 ---
 
-## _The Past is a Grotesque Animal_ from Of Montreal
+### _The Past is a Grotesque Animal_ from Of Montreal
 
 **Stayed in the shower too, too long listening to this. (Multiple times in the same day.)**
 
