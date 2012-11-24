@@ -2,9 +2,29 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>{{ page.title }}</title>
-<link rel="stylesheet" href="/css/default.css" type="text/css" />
+<style type="text/css">
+body {
+    font-size: 100%;
+    font-family: Verdana, sans-serif;
+}
+a {
+	color: #000; 
+	text-decoration: none;
+}
+a:visited { color: #000; }
+a:hover { color: #666; }
+#thedeal {
+    width: 400px;
+    margin-left: 2em;
+    margin-top: 1em;
+}
+#email { text-align:right; }
+</style>
 </head>
 <body>
+<div id="thedeal">
+<img src="besseggen.ridge.jpg"/>
 {{ content }}
+</div>
 </body>
 </html>
