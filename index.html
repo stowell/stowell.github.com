@@ -24,10 +24,9 @@ a:hover { color: #666; }
 <div id="thedeal">
 <img src="besseggen.ridge.jpg"/>
 <p>
-<a href="/2012/05/15/bogus.html"><em>Bogus</em> from Whirr</a><br/>
-<a href="/2012/05/12/i-break-horses.html"><em>Winter Beats</em> and <em>Hearts</em> from I Break Horses</a><br/>
-<a href="/2012/02/27/grotesque-animal.html"><em>The Past is a Grotesque Animal</em> from Of Montreal</a><br/>
-<a href="/2012/02/09/ldr.html"><em>Born to Die</em> and <em>Video Games</em> from Lana Del Rey</a>
+{% for post in site.posts %}
+	<a href="{{ post.url }}">{{ post.tile }}</a><br/>
+{% endfor %}
 </p>
 <p id="email"><a href="mailto:dan@stowell.de">dan@stowell.de</a></p>
 </div>
