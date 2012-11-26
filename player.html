@@ -43,6 +43,7 @@
     var api_key = 'D4ELP5JGEUVXNPMS8';
     var tp = 'CANFQLO13B3A2EE3EB';
     $('#api').bind('ready.rdio', function() {
+      console.log('ready.rdio');
       $.getJSON(
         'http://developer.echonest.com/api/v4/playlist/dynamic/create',
         {
@@ -56,6 +57,7 @@
           'api_key': api_key
         },
         function(data) {
+          console.log('dynamic/create');
           var response = data.response;
           session_id = response.session_id;
           $.getJSON(
@@ -65,6 +67,7 @@
               'results': 5
             },
             function(data) {
+              console.log('dynamic/next');
               var response = data.response;
               songs = response.songs;
               $.each(songs, function(i, song){
