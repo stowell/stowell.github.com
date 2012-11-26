@@ -7,9 +7,9 @@
   <script type="text/javascript">
     var duration = 1; // track the duration of the currently playing track
     $(document).ready(function() {
-      $('#api').bind('ready.rdio', function() {
-        $(this).rdio().play('a1938183');
-      });
+      // $('#api').bind('ready.rdio', function() {
+      //   $(this).rdio().play('a1938183');
+      // });
       $('#api').bind('playingTrackChanged.rdio', function(e, playingTrack, sourcePosition) {
         if (playingTrack) {
           duration = playingTrack.duration;
@@ -37,6 +37,44 @@
       $('#play').click(function() { $('#api').rdio().play(); });
       $('#pause').click(function() { $('#api').rdio().pause(); });
       $('#next').click(function() { $('#api').rdio().next(); });
+    });
+  </script>
+  <script type="text/javascript">
+    var api_key = 'D4ELP5JGEUVXNPMS8';
+    var tp = 'CANFQLO13B3A2EE3EB';
+    $('#api').bind('ready.rdio', function() {
+      $.getJSON(
+        'http://developer.echonest.com/api/v4/playlist/dynamic/create',
+        {
+          'type': 'catalog-radio',
+          'adventurousness': 0.8,
+          'seed_catalog': tp,
+          'session_catalog': tp,
+          'bucket': ['id:rdio-US', 'tracks'],
+          'artist': 'tame impala',
+          'limit': true,
+          'api_key': api_key
+        },
+        function(data) {
+          var response = data.response;
+          session_id = response.session_id;
+          $.getJSON(
+            'http://developer.echonest.com/api/v4/playlist/dynamic/next',
+            {
+              'api_key': api_key,
+              'results': 5
+            },
+            function(data) {
+              var response = data.response;
+              songs = response.songs;
+              $.each(songs, function(i, song){
+                var fid = song.tracks[0].foreign_id;
+                var source = fid.split(':')[2];
+                $('#api').rdio().queue(source);
+              });
+              $('#api').rdio().play();
+            });
+        });
     });
   </script>
 </head>
