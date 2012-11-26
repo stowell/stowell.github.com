@@ -8,7 +8,7 @@
     var duration = 1; // track the duration of the currently playing track
     $(document).ready(function() {
       $('#api').bind('ready.rdio', function() {
-        $(this).rdio().play('a1827714');
+        $(this).rdio().play('a1938183');
       });
       $('#api').bind('playingTrackChanged.rdio', function(e, playingTrack, sourcePosition) {
         if (playingTrack) {
@@ -31,8 +31,6 @@
           $('#pause').show();
         }
       });
-      // this is a valid playback token for localhost.
-      // but you should go get your own for your own domain.
       $('#api').rdio('GApQsVp7_____2Nyd2I5N3B4ajJ4YmUyYnI0cm1mZHZqd3N0b3dlbGwuZGVHdp3dh4YghzTYrK2W07WZ');
 
       $('#previous').click(function() { $('#api').rdio().previous(); });
