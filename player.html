@@ -40,44 +40,46 @@
     });
   </script>
   <script type="text/javascript">
-    var api_key = 'D4ELP5JGEUVXNPMS8';
-    var tp = 'CANFQLO13B3A2EE3EB';
-    $('#api').bind('ready.rdio', function() {
-      console.log('ready.rdio');
-      $.getJSON(
-        'http://developer.echonest.com/api/v4/playlist/dynamic/create',
-        {
-          'type': 'catalog-radio',
-          'adventurousness': 0.8,
-          'seed_catalog': tp,
-          'session_catalog': tp,
-          'bucket': ['id:rdio-US', 'tracks'],
-          'artist': 'tame impala',
-          'limit': true,
-          'api_key': api_key
-        },
-        function(data) {
-          console.log('dynamic/create');
-          var response = data.response;
-          session_id = response.session_id;
-          $.getJSON(
-            'http://developer.echonest.com/api/v4/playlist/dynamic/next',
-            {
-              'api_key': api_key,
-              'results': 5
-            },
-            function(data) {
-              console.log('dynamic/next');
-              var response = data.response;
-              songs = response.songs;
-              $.each(songs, function(i, song){
-                var fid = song.tracks[0].foreign_id;
-                var source = fid.split(':')[2];
-                $('#api').rdio().queue(source);
+    $(document).ready(function(){
+      var api_key = 'D4ELP5JGEUVXNPMS8';
+      var tp = 'CANFQLO13B3A2EE3EB';
+      $('#api').bind('ready.rdio', function() {
+        console.log('ready.rdio');
+        $.getJSON(
+          'http://developer.echonest.com/api/v4/playlist/dynamic/create',
+          {
+            'type': 'catalog-radio',
+            'adventurousness': 0.8,
+            'seed_catalog': tp,
+            'session_catalog': tp,
+            'bucket': ['id:rdio-US', 'tracks'],
+            'artist': 'tame impala',
+            'limit': true,
+            'api_key': api_key
+          },
+          function(data) {
+            console.log('dynamic/create');
+            var response = data.response;
+            session_id = response.session_id;
+            $.getJSON(
+              'http://developer.echonest.com/api/v4/playlist/dynamic/next',
+              {
+                'api_key': api_key,
+                'results': 5
+              },
+              function(data) {
+                console.log('dynamic/next');
+                var response = data.response;
+                songs = response.songs;
+                $.each(songs, function(i, song){
+                  var fid = song.tracks[0].foreign_id;
+                  var source = fid.split(':')[2];
+                  $('#api').rdio().queue(source);
+                });
+                $('#api').rdio().play();
               });
-              $('#api').rdio().play();
-            });
-        });
+          });
+      });
     });
   </script>
 </head>
