@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post 
 title: Winter Beats and Hearts from I Break Horses
 ---
 
