@@ -114,9 +114,11 @@ window.callback.volumeChanged = function (a) {
 window.callback.muteChanged = function (a) {
   logCallback('muteChanged('+stringify(a)+')');
 };
-window.callback.positionChanged = function (a) {
-  logCallback('positionChanged('+stringify(a)+')');
-};
+/* DES - too much
+ *  window.callback.positionChanged = function (a) {
+ *    logCallback('positionChanged('+stringify(a)+')');
+ *  };
+ */
 window.callback.queueChanged = function (a) {
   logCallback('queueChanged('+stringify(a)+')');
 };
