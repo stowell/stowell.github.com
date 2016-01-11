@@ -3,3 +3,14 @@ body {
     font-family: 'Crimson Text', Georgia, serif;
     line-height: 1.2;
 }
+.name {
+    font-size: 150%;
+    color: #777;
+    text-align: right;
+    margin-bottom: 2px;
+}
+.copyright {
+    font-size: 80%;
+    color: #999;
+    text-align: right;
+}
