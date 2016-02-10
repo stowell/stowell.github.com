@@ -1,0 +1,25 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Checkpoint: programming over text</title>
+<link rel="stylesheet" type="text/css" href="/mobile.css" media="screen, handheld" />
+<link rel="stylesheet" type="text/css" href="/og.css" media="screen  and (min-width: 40.5em)" />
+</head>
+<body>
+<p class="name">Checkpoint: programming over text</p>
+<p>For a while now I&#39;ve been taken by the idea of being able to program using just text messages. No matter how busy we all are we find the time to check our phones every <em>n</em> minutes. It&#39;d be great to put something that easy and automatic and conditioned to good use. Plus any interpreter simple and forgiving enough to make sense of short, fat-fingered strings of text would probably work anywhere (a terminal on a &#39;real&#39; computer or an app or a web page).</p><p>As is typical for people who enjoy the actual act of programming, I&#39;m having a hard time coming up with a use for such a service. I have stitched together a Twilio phone number, a few lines of Python, and the wunderground.com API to text me with the temperature every morning at 5:30. It helps to know if you should wear any clothing as you rush outside into the dark of morning with your (metaphorical) dog.</p><p><img src="twilio-screenshot.png"></p><p>That&#39;s all well and good but how would you write this program on your phone? Here&#39;s a terse first crack:</p><pre>    bot temp
+    ask Where?
+    ask When?
+    temp is temperature where
+    tz is timezone where
+    send It&#39;s temp out.
+    schedule daily when tz</pre><p>There&#39;s a lot of wishful thinking here but no absolute magic. People can enter plenty of junk for both the time and location. They could enter ambiguous locations (how many towns are the only town with that name on this planet?). Before we even get to that point though you could imagine, say, making a mistake as you enter this program onto your possibly-not-clean touchscreen and then what? The most plausible thing I can think of is something like</p><pre>    ask Wherr?
+    change Wherr
+    <strong>What would you like to do instead of ask &#39;Wherr?&#39;</strong>
+    ask Where?</pre><p>This has the feel of a line editor straight from the late seventies, in some ways a glorious time but do we really want to go all the way back?</p>
+<p class="copyright">
+ds, february tenth, two thousand sixteen
+</p>
+</body>
+</html>
