@@ -2,9 +2,13 @@ body {
     font-size: 100%;
     font-family: 'Crimson Text', Georgia, serif;
     line-height: 1.2;
+    width: 100%;
+    max-width: 100%;
 }
 pre {
     overflow: scroll;
+    width: 100%;
+    max-width: 100%;
 }
 .name {
     font-size: 150%;
