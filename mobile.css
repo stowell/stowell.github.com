@@ -3,8 +3,8 @@ body {
     font-family: 'Crimson Text', Georgia, serif;
     line-height: 1.2;
 }
-pre, ul {
-    max-width: 25em;
+pre {
+    overflow: scroll;
 }
 .name {
     font-size: 150%;
