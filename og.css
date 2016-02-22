@@ -3,6 +3,7 @@ body {
     font-family: 'Crimson Text', Georgia, serif;
     line-height: 1.2;
     max-width: 25em;
+    width: 25em;
     margin-left: 5%;
     margin-top: 2%;
 }
