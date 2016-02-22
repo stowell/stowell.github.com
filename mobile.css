@@ -6,9 +6,12 @@ body {
     max-width: 100%;
 }
 pre {
-    overflow: scroll;
+    overflow: auto;
     width: 100%;
     max-width: 100%;
+}
+ul {
+    margin-left: 0;
 }
 .name {
     font-size: 150%;
