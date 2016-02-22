@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>How to mmap and execute a flat binary on Linux</title>
+<link rel="stylesheet" type="text/css" href="/mobile.css" media="screen, handheld" />
+<link rel="stylesheet" type="text/css" href="/og.css" media="screen  and (min-width: 40.5em)" />
+</head>
+<body>
+<p class="name">How to mmap and execute a flat binary on Linux</p>
+<p>
+Let's say you have some machine code lying around (without any jumps) that you want to run. I don't know why <em>you</em> would want to do that. I found myself wanting to (in order to, say, send machine code across the network and execute it on many nodes) but couldn't find a single-page guide. Here it is.
+</p>
+<p>
+First, let's write a tiny program to execute.
+</p>
+<pre>
+unsigned int justreturn() {
+    return 243;
+}
+</pre>
+<p>
+We'll compile it and then grab its .text section.
+</p>
+<pre>
+$ clang -O0 -c justreturn.c
+$ objcopy --only-section=.text -O binary justreturn.o justreturn.bin
+</pre>
+<p>
+Now we have raw machine code sitting in <code>justreturn.bin</code>. We'll need to open that file, map it into readable and executable memory, then call <code>justreturn()</code>.
+</p>
+<pre>
+#include <fcntl.h>
+#include <sys/mman.h>
+
+
+typedef unsigned int func();
+
+
+int main(int argc, char* argv[]) {
+    int fd = open(argv[1], O_RDONLY);
+    if (-1 == fd) {
+        return 1;
+    }
+    func* f = mmap(
+        0, 4096, PROT_READ | PROT_EXEC, MAP_PRIVATE, fd, 0);
+    if (MAP_FAILED == f) {
+        return 2;
+    }
+    unsigned int result = f();
+    if (243 == result) {
+        return 0;
+    } else {
+        return 3;
+    }
+}
+</pre>
+<p>
+Compiling and running this beauty at least exits successfully. If we've screwed anything up we'll most likely segfault.
+</p>
+<pre>
+$ clang -O0 -o mapped mapped.c
+$ ./mapped justreturn.bin; echo $?
+0
+</pre>
+<p>
+I spent a lot of time on StackOverflow and Eli Bendersky's site. The one piece I was missing for the longest time was passing `--only-section=.text` to `objcopy`. I was in fact copying and attempting to run the ELF header. Like a chump.
+</p>
+<ul>
+<li><a href="http://eli.thegreenplace.net/2013/11/05/how-to-jit-an-introduction">How to JIT - an introduction</a></li>
+<li><a href="http://stackoverflow.com/questions/3615392/how-to-make-gcc-generate-only-machine-code-that-can-be-loaded-directly-into-memo">How to make gcc generate only machine code that can be loaded directly into memory and executed?</li>
+<li><a href="http://stackoverflow.com/questions/12409908/invoking-a-function-main-from-a-binary-file-in-c">Invoking a function (main()) from a binary file in C</a></li>
+</ul>
+<p class="copyright">
+ds, february twenty second, two thousand sixteen
+</p>
+</body>
+</html>
