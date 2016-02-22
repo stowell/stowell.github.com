@@ -6,9 +6,9 @@ body {
     max-width: 100%;
 }
 pre {
-    overflow: auto;
     width: 100%;
     max-width: 100%;
+    white-space:pre-wrap;
 }
 ul {
     margin-left: 0;

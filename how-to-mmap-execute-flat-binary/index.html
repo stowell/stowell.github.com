@@ -30,8 +30,8 @@ $ objcopy --only-section=.text -O binary justreturn.o justreturn.bin
 Now we have raw machine code sitting in <code>justreturn.bin</code>. We'll need to open that file, map it into readable and executable memory, then call <code>justreturn()</code>.
 </p>
 <pre>
-#include <fcntl.h>
-#include <sys/mman.h>
+#include &lt;fcntl.h&gt;
+#include &lt;sys/mman.h&gt;
 
 
 typedef unsigned int func();
