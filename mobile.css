@@ -1,13 +1,13 @@
 body {
     font-size: 100%;
     font-family: 'Crimson Text', Georgia, serif;
-    line-height: 1.2;
     width: 100%;
-    max-width: 100%;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    text-align: justified;
 }
 pre {
     width: 100%;
-    max-width: 100%;
     white-space:pre-wrap;
 }
 ul {
