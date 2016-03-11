@@ -4,6 +4,7 @@ body {
     width: 100%;
     margin-left: 0.5em;
     margin-right: 0.5em;
+    text-align: justify;
 }
 pre {
     width: 100%;
