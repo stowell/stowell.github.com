@@ -1,9 +1,8 @@
 body {
     font-size: 100%;
     font-family: 'Crimson Text', Georgia, serif;
-    width: 100%;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    width: 90%;
+    margin: auto;
     text-align: justify;
 }
 pre {
