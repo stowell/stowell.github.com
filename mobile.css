@@ -23,3 +23,7 @@ ul {
     color: #999;
     text-align: right;
 }
+img {
+    max-width: 100%;
+    height: auto;
+}
