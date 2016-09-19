@@ -3,6 +3,7 @@ body {
     font-family: 'Crimson Text', Georgia, serif;
     width: 90%;
     margin: auto;
+    margin-top: 2em;
     text-align: justify;
 }
 pre {
